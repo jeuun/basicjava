@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>가위 바위 보</title>
+		<style>
+			body{
+				text-align: center;
+			}
+			table{
+				margin: auto;
+				width: 80%;
+			}
+			td{
+				font-size: 24pt;
+				width: 40%;
+			}
+			.you{
+				background-color: yellow;
+			}
+			.me{
+				background-color: olive;
+			}
+			img{
+				width: 40%;
+				height: 40%;
+			}
+			p{
+				clear: both;
+			}
+		</style>
+		
+		<script>
+			var card = ["가위","바위","보"];
+			function startGame()
+			{
+				var player = prompt("가위 바위 보를 입력하세요 : ","바위");
+				var computer = card[Math.floor(Math.random()*3)];
+				
+				if(player==computer)
+				{
+					document.getElementById("result").innerHTML = "결 과 : 비겼습니다.";
+				}
+				else
+				{
+					if(player=="가위"&&computer=="바위"||player=="바위"&&computer=="보"||player=="보"&&computer=="가위")
+						document.getElementById("result").innerHTML = "결 과 : 컴퓨터가 이겼습니다.";
+					else
+						document.getElementById("result").innerHTML = "결 과 : 당신이 이겼습니다.";						
+				}
+				
+				document.getElementById("left").src = "../images/"+player+"_좌.png";
+				document.getElementById("right").src = "../images/"+computer+"_우.png";
+			}
+			
+		</script>
+	</head>
+	
+	<body>
+		<button onclick="startGame();">게임시작</button>
+		<table>
+			<tr>
+				<td class="you">당  신</td>
+				<td class="me">컴퓨터</td>
+			</tr>
+		</table>
+		<div id="images">
+			<img id="left" src="../images/바위_좌.png">
+			<img id="right" src="../images/바위_우.png">
+		</div>
+		<p id="result">결 과 : </p>
+	</body>
+</html>
